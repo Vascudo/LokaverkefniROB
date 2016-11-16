@@ -1,0 +1,6 @@
+16.11.2016 -
+
+Í dag var byrjað á Verkefni 7 í robotics, og var ákveðið að gera multiple tasks þar sem öll verkefnin yfir önninna eru sett í sér task sem
+keyra hvert þegar ýtt er á takka á fjarstýringu.
+
+Fyrst þurftum við að læra Tasks og að gera header, testaði headera með verkefni 1 og testaði líka að stoppa motora.
