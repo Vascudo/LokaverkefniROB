@@ -30,6 +30,10 @@
 
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 #include "verk1.h"
+#include "verk2.h"
+#include "verk3.h"
+#include "verk4.h"
+#include "verk5.h"
 #include "stopmotors.h"
 task main()
 {
@@ -40,9 +44,30 @@ task main()
 					beeptest();
 				}
 
-			if(vexRT[Btn6D] == 1)
+			if(vexRT[Btn8L] == 1)
 			{
-
+				stopmotors();
 			}
+
+			if(vexRT[Btn7R] == 1)
+			{
+				verk2();
+			}
+
+			if(vexRT[Btn7D] == 1)
+			{
+				verk3();
+			}
+
+			if(vexRt[Btn7U] == 1)
+			{
+				verk4();
+			}
+
+			if(vexRt[)
+			{
+			}
+
+
 		}
 }
