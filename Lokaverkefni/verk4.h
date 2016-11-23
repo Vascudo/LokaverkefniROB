@@ -1,50 +1,3 @@
-void stopMotors(int waitTime)
-{
-	motor(rightMotor) = 0;
-	motor(leftMotor) = 0;
-	motor(armMotor) = 0;
-	motor(clawMotor) = 0;
-	wait1Msec(waitTime);
-}
-
-void clawOpen()
-{
-	motor(clawMotor) = -127;
-	wait1Msec(3000);
-}
-
-void armDown()
-{
-	motor(armMotor) = -64;
-	wait1Msec(1000);
-}
-
-void drive()
-{
-	motor(leftMotor) = 40;
-	motor(rightMotor) = 40;
-	wait1Msec(1000);
-}
-
-void clawClose()
-{
-	motor(clawMotor) = 127;
-	wait1Msec(1000);
-}
-
-void armUp()
-{
-	motor(armMotor) = 64;
-	wait1Msec(500);
-}
-
-void turn180()
-{
-	motor(rightMotor) = 67;
-	motor(leftMotor) = -67;
-	wait1Msec(500);
-}
-
 void verk4()
 {
 	clawClose();
@@ -54,10 +7,8 @@ void verk4()
   int threshold = 2400;      /* found by taking a reading on both DARK and LIGHT    */
                             /* surfaces, adding them together, then dividing by 2. */
 
-  for(int i = 1; i <= 2;)
+  while(SensorValue(sonarSensor) >= 30 && vexRT[Btn8L] == 0)
   {
-	  while(true)
-	  {
 	    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
 	    displayLCDCenteredString(0, "LEFT  CNTR  RGHT");        //  Display   |
 	    displayLCDPos(1,0);                                     //  Sensor    |
@@ -90,38 +41,16 @@ void verk4()
 	      motor[leftMotor]  = 0;
 	      motor[rightMotor] = 67;
 	    }
-			if(i == 1)
+
+			if(SensorValue(sonarSensor) <= 30)
 			{
-				i++;
-			  if(SensorValue(sonarSensor) <= 30)
-			  {
-				  stopMotors(1000);
-				  clawOpen();
-				  armDown();
-				  drive();
-				  stopMotors(3000);
-				  clawClose();
-				  armUp();
-				  turn180();
-				}
+				stopMotors(1000);
+				clawOpen();
+				armDown();
+				drive();
+				stopMotors(3000);
+				clawClose();
+				armUp();
 			}
-
-			if(i == 2)
-			{
-
-				  if(SensorValue(sonarSensor) <= 10)
-				  {
-					  stopMotors(1000);
-					  clawOpen();
-					  armDown();
-					  drive();
-					  stopMotors(3000);
-					  clawClose();
-					  armUp();
-					  turn180();
-					}
-				}
-			}
-
 	}
-	}
+}

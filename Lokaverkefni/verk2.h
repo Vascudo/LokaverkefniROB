@@ -1,8 +1,7 @@
 
 void verk2()
 {
-
-	while((SensorValue(sonarSensor) > 20  || SensorValue(sonarSensor) == -1))
+		while((SensorValue(sonarSensor) > 20  || SensorValue(sonarSensor) == -1) && vexRT[Btn8L] == 0)
 	  {
 	    motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
 	    motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
@@ -16,11 +15,11 @@ void verk2()
 	      motor[armMotor] = 63;
 	    }
 
-	    if(vexRT[Btn5U == 1])//Makes claw open//
+	    if(vexRT[Btn5U] == 1) //Makes claw open//
 	    {
 	      motor[clawMotor] = -63;
 	    }
-	    else if(vexRT[Btn5D] == 1)//Makes claw cloes//
+	    else if(vexRT[Btn5D] == 1)//Makes claw close//
 	    {
 	      motor[clawMotor] = 63;
 	    }

@@ -1,6 +1,7 @@
 #pragma config(Sensor, in1,    lineFollowerLEFT, sensorLineFollower)
 #pragma config(Sensor, in2,    lineFollowerRIGHT, sensorLineFollower)
 #pragma config(Sensor, in3,    lineFollowerCENTER, sensorLineFollower)
+#pragma config(Sensor, in5,    lightSensor,    sensorReflection)
 #pragma config(Sensor, dgtl6,  sonarSensor,    sensorSONAR_cm)
 #pragma config(Motor,  port1,           rightMotor,    tmotorVex393, openLoop, reversed)
 #pragma config(Motor,  port2,           armMotor,      tmotorVex269, openLoop)
@@ -29,27 +30,73 @@
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
+
+void stopMotors(int waitTime)
+{
+	motor(rightMotor) = 0;
+	motor(leftMotor) = 0;
+	motor(armMotor) = 0;
+	motor(clawMotor) = 0;
+	wait1Msec(waitTime);
+}
+
+void clawOpen()
+{
+	motor(clawMotor) = -127;
+	wait1Msec(3000);
+}
+
+void armDown()
+{
+	motor(armMotor) = -64;
+	wait1Msec(1000);
+}
+
+void drive()
+{
+	motor(leftMotor) = 40;
+	motor(rightMotor) = 40;
+	wait1Msec(1000);
+}
+
+void clawClose()
+{
+	motor(clawMotor) = 127;
+	wait1Msec(1000);
+}
+
+void armUp()
+{
+	motor(armMotor) = 64;
+	wait1Msec(500);
+}
+
+void turn180()
+{
+	motor(rightMotor) = 67;
+	motor(leftMotor) = -67;
+	wait1Msec(500);
+}
+
 #include "verk1.h"
 #include "verk2.h"
 #include "verk3.h"
 #include "verk4.h"
 #include "verk5.h"
 #include "stopmotors.h"
+
+
+
 task main()
 {
 	while(true)
 		{
-			if(vexRT[Btn7L] == 1)
-				{
-					beeptest();
-				}
-
-			if(vexRT[Btn8L] == 1)
+			while(vexRT[Btn7L] == 1)
 			{
-				stopmotors();
+					beeptest();
 			}
 
-			if(vexRT[Btn7R] == 1)
+			while(vexRT[Btn7R] == 1)
 			{
 				verk2();
 			}
@@ -59,13 +106,14 @@ task main()
 				verk3();
 			}
 
-			if(vexRt[Btn7U] == 1)
+			if(vexRT[Btn7U] == 1)
 			{
 				verk4();
 			}
 
-			if(vexRt[)
+			if(vexRT[Btn8R] == 1)
 			{
+				verk5();
 			}
 
 
