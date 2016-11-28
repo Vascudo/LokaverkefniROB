@@ -91,12 +91,13 @@ task main()
 {
 	while(true)
 		{
-			while(vexRT[Btn7L] == 1)
+			if(vexRT[Btn7L] == 1)
 			{
 					beeptest();
+					stopMotors(4000);
 			}
 
-			while(vexRT[Btn7R] == 1)
+			if(vexRT[Btn7R] == 1)
 			{
 				verk2();
 			}

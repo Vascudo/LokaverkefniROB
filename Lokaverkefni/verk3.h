@@ -2,7 +2,7 @@
 void verk3()
 {
 		wait1Msec(2000);						// Robot waits for 2000 milliseconds before executing program
-		while(SensorValue(lightSensor) > 200 && vexRT[Btn8L] == 0)
+		while(SensorValue(lightSensor) > 150 && vexRT[Btn8L] == 0)
 		{
 			if(SensorValue(sonarSensor) > 20  || SensorValue(sonarSensor) == -1)		// Loop while robot's Ultrasonic sensor is further than 20 inches away from an object
 			{                                                                         // || (or) it is '-1'.  (-1 is the value returned when nothing is in it's visable range)

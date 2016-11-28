@@ -3,8 +3,8 @@ void verk2()
 {
 		while((SensorValue(sonarSensor) > 20  || SensorValue(sonarSensor) == -1) && vexRT[Btn8L] == 0)
 	  {
-	    motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch1])/2;  // (y + x)/2
-	    motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch1])/2;  // (y - x)/2
+	    motor[leftMotor]  = (vexRT[Ch2] + vexRT[Ch4])/2;  // (y + x)/2
+	    motor[rightMotor] = (vexRT[Ch2] - vexRT[Ch4])/2;  // (y - x)/2
 
 	    if(vexRT[Btn6U] == 1)//Makes arm go forward//
 	    {
