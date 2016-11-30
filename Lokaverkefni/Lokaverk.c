@@ -83,7 +83,6 @@ void turn180()
 #include "verk3.h"
 #include "verk4.h"
 #include "verk5.h"
-#include "stopmotors.h"
 
 
 
